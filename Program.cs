@@ -23,24 +23,49 @@ namespace Program
         public Book(string title, int id, string author, int year, string publish, string describe, int price)
         {
             Title = title;
+
             Id = id;
+
             Author = author;
+
             Year = year;
+
             Publish = publish;
+
             Describe = describe;
+
             Price = price;
         }
+
         static void Main(string[] args)
         {
-            // Создаем экземпляр BookRepository
+            
+            //Создаем экземпляр BookRepository//
             BookRepository bookRepository = new BookRepository();
 
-            // Получаем список всех книг
+            //Получаем список всех книг//
             List<Book> allBooks = bookRepository.GetAllBooks();
-            Console.WriteLine("Список всех книг:");
-            foreach (var book in allBooks)
+            //Console.WriteLine("Список всех книг:");//
+            
+           
+            
+            Console.WriteLine("Я ищу...\n 1) Показать список всех книг\n 2) Поиск книги\n");
+            int search = int.Parse(Console.ReadLine());
+
+            
+
+            switch(search)
             {
-                Console.WriteLine($"Название: {book.Title}\n\n Автор: {book.Author}\n Год издания: {book.Year}\n Издательство: {book.Publish}\n Стоимость: {book.Price}\n\n Описание: {book.Describe}\n\n");
+                case 1:
+                    {
+                        foreach (var book in allBooks)
+                        {
+                            Console.WriteLine($"Название: {book.Title}\n\n Автор: {book.Author}" +
+                                $"\n Год издания: {book.Year}\n Издательство: {book.Publish}" +
+                                $"\n Стоимость: {book.Price}\n\n Описание: {book.Describe}\n\n");
+                        }
+                        break;
+                    }
             }
         }
     }

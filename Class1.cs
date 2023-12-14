@@ -1,5 +1,7 @@
 ﻿using System;
 using Program;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace StoreLib
 {
@@ -21,6 +23,11 @@ namespace StoreLib
         public List<Book> GetAllBooks()
         {
             return books;
+        }
+
+        public List<Book> SearchBooksByTitle(string title)
+        {
+            return books.Where(book => book.Title.Contains(title, StringComparison.OrdinalIgnoreCase)).ToList();
         }
     }
 }
